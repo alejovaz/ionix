@@ -6,4 +6,4 @@ Ejecute el archivo "reemp.sh" este se encarga de:
 
 Prerequisitos:
 
-- Tener docker instalado localmente
+- Tener docker y openssl instalado localmente
