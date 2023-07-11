@@ -14,11 +14,12 @@ spec:
       labels:
         {{- include "alejo-ionix.selectorLabels" . | nindent 8 }}
     spec:
+      securityContext: # this applies the security settings to all containers in the pod
+        #unAsUser: 1001
+        #runAsGroup: 101
+        #fsGroup: 101
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 1000
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -27,10 +28,10 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: alejo-ionix-config
-              mountPath: /usr/share/nginx/html
-              readOnly: true
+              mountPath: /usr/share/nginx/html/index.html
               subPath: index.html
+              readOnly: true
       volumes:
         - name: alejo-ionix-config
           configMap:
-            name: alejo-ionix-config
+            name: {{ template "alejo-ionix.fullname" . }}

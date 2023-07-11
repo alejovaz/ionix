@@ -4,16 +4,12 @@ image:
   pullPolicy: IfNotPresent
 
 service:
+  name: alejo-ionix
   type: ClusterIP
   port: 80
 
-configMap:
-  index.html: |
-    <html>
-      <body>
-        <h1>Hola Mundo!</h1>
-      </body>
-    </html>
+html:
+  indexHtml: config/index.html
 
 replicaCount: 3
 
