@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alejo-ionix-config
+data:
+  index.html: |
+    {{ .Values.configMap.index.html }}
