@@ -5,7 +5,7 @@ image:
 
 service:
   name: alejo-ionix
-  type: ClusterIP
+  type: NodePort
   port: 80
 
 html:

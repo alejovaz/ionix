@@ -15,9 +15,9 @@ spec:
         {{- include "alejo-ionix.selectorLabels" . | nindent 8 }}
     spec:
       securityContext: # this applies the security settings to all containers in the pod
-        #unAsUser: 1001
-        #runAsGroup: 101
-        #fsGroup: 101
+        # unAsUser: 1001
+        # runAsGroup: 101
+        # fsGroup: 101
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
