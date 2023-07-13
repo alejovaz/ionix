@@ -14,13 +14,30 @@ spec:
       labels:
         {{- include "alejo-ionix.selectorLabels" . | nindent 8 }}
     spec:
-      securityContext: # this applies the security settings to all containers in the pod
-        # unAsUser: 1001
-        # runAsGroup: 101
-        # fsGroup: 101
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - store
+            topologyKey: "kubernetes.io/hostname"
       containers:
         - name: {{ .Chart.Name }}
+          securityContext: # this applies the security settings to all containers in the pod
+            # readOnlyRootFilesystem: true
+            # runAsUser: 1000
+            # runAsNonRoot: true
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

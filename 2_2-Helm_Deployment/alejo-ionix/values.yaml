@@ -1,6 +1,6 @@
 image:
   repository: nginx
-  tag: latest
+  tag: 1.25.1
   pullPolicy: IfNotPresent
 
 service:
