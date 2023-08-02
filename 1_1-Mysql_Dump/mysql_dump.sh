@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# IMPORTANTE: Se asume que la BD es existente y que se tiene la herramienta "mysqldump" y "bzcat" instaladas en el sistema.
+# IMPORTANTE: Se asume que la BD es existente con las creds que están en el .env y que se tiene la herramienta "mysqldump" y "bzcat" instaladas en el sistema.
 # MAS IMPORTANTE: Si quiere puede definir las variables de ambiente en el archivo .env y cargarlas en el env ejecutando: "source .env"
 
 echo "¿Tiene las variables de ambiente definidas? Si escoje \"N\" se le pedirá ingresarlas por teclado"
